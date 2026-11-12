@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "header"
+            "main"
+            "footer";
+    }
+    .sidebar {
+        display: none; /* Ẩn sidebar trên mobile */
+    }
+}

@@ -1,0 +1,12 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-stack;
+    background-color: $bg-body;
+    color: $text-main;
+    line-height: 1.6;
+}

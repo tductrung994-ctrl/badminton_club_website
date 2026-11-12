@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diễn đàn cộng đồng - CLB Cầu lông</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER & NAVBAR -->
+    <header>
+        <div class="navbar">
+            <div class="logo">Badminton Club</div>
+            <nav class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="about.html">Giới thiệu</a>
+                <a href="forum.html" class="active"">Diễn đàn</a>
+                <a href="schedule.html">Lịch sân</a>
+                <a href="login.html" id="nav-auth-link">Đăng nhập</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="forum-container">
+        <h2 style="color: #1a2e5a; margin-bottom: 20px; text-align: center;">Diễn đàn Thảo luận & Thông báo</h2>
+
+        <!-- Khung đăng bài (Chỉ hiển thị khi đã đăng nhập) -->
+        <div class="card" id="box-create-post" style="margin-bottom: 25px; display: none;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 12px; color: #1a2e5a;">Tạo bài viết / Thảo luận mới</h3>
+            <form id="form-new-post">
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <input type="text" id="post-title" placeholder="Tiêu đề bài viết hoặc [THÔNG BÁO]" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <textarea id="post-content" rows="3" placeholder="Nội dung bạn muốn chia sẻ với mọi người..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: auto; padding: 8px 20px;">Đăng bài</button>
+            </form>
+        </div>
+
+        <div id="login-warning" style="text-align: center; margin-bottom: 20px; padding: 10px; background: #fef3c7; border-radius: 6px;">
+            Vui lòng <a href="login.html" style="color: #1a2e5a; font-weight: bold;">Đăng nhập</a> để tham gia đăng bài và bình luận!
+        </div>
+
+        <!-- Danh sách bài viết được render động từ localStorage -->
+        <div id="forum-feed">
+            <!-- Dữ liệu bài viết sẽ đổ vào đây bằng JavaScript -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #1e293b; color: white; text-align: center; padding: 20px; margin-top: 40px;">
+        <p>&copy; 2026 Câu lạc bộ Cầu lông. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+</html>

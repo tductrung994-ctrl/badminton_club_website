@@ -1,0 +1,357 @@
+/* Reset và cấu hình chung */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #f4f7fb;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* Header & Navbar dùng Flexbox */
+header {
+    background-color: #1a2e5a;
+    color: white;
+    padding: 16px 32px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: #93c5fd;
+    margin-left: 24px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Container chính */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: #1a2e5a;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Biểu mẫu Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #1a2e5a;
+    box-shadow: 0 0 0 3px rgba(26, 46, 90, 0.1);
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: #1a2e5a;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #273d70;
+}
+
+.error-msg {
+    color: crimson;
+    font-size: 0.875rem;
+    margin-top: 6px;
+    display: block;
+}
+
+.switch-link {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.95rem;
+}
+
+.switch-link a {
+    color: #1a2e5a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+/* Bảng dữ liệu Admin */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #1a2e5a;
+    color: white;
+}
+
+/* --- CSS CHO TRANG DIỄN ĐÀN (FORUM) --- */
+.forum-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.post-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.post-card.pinned {
+    border: 2px solid #ff4757;
+    background-color: #fff9f9;
+}
+
+.pinned-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4757;
+    color: white;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.post-author {
+    font-weight: bold;
+    color: #1a2e5a;
+}
+
+.post-time {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-left: 10px;
+}
+
+.post-content {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 10px;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.comment-section {
+    margin-top: 15px;
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.comment-list {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.comment-item {
+    padding: 6px 0;
+    border-bottom: 1px dashed #cbd5e1;
+}
+
+.comment-form {
+    display: flex;
+    gap: 10px;
+}
+
+.comment-form input {
+    flex: 1;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+/* --- 1. CHỈ BÁO TRANG HIỆN TẠI (ACTIVE NAV LINK) --- */
+.nav-links a {
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+/* Hiệu ứng gạch chân sáng hoặc đổi màu khi active */
+.nav-links a.active {
+    color: #fbbf24 !important; /* Màu vàng gold thể thao */
+    font-weight: bold;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fbbf24;
+    border-radius: 2px;
+}
+
+/* --- HERO BANNER FULL MÀN HÌNH (FULL-SCREEN) --- */
+.hero {
+    position: relative;
+    /* Phủ ảnh nền toàn chiều rộng và kết hợp lớp chuyển màu (gradient) giúp chữ dễ đọc */
+    background: linear-gradient(rgba(26, 46, 90, 0.75), rgba(26, 46, 90, 0.65)), 
+                url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqs_72ljMu2Ni1lUOVUQdYQtn-mqj3t9HSDOD_BT0WWg&s=10') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    
+    /* Thiết lập chiều cao lớn hoặc phủ kín màn hình (ví dụ 85% đến 90% chiều cao màn hình) */
+    min-height: 85vh; 
+    
+    /* Canh giữa nội dung hoàn hảo bằng Flexbox */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Khoảng đệm thoáng đãng */
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem; /* Tăng kích thước tiêu đề cho hoành tráng */
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Tạo bóng chữ cho nổi bật trên nền ảnh */
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin-bottom: 30px;
+    color: #e2e8f0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero .btn-primary {
+    background-color: #f59e0b; /* Màu vàng cam thể thao */
+    color: #1e293b;
+    font-weight: bold;
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    transition: transform 0.2s, background-color 0.2s;
+    text-decoration: none;
+}
+
+.hero .btn-primary:hover {
+    background-color: #fbbf24;
+    transform: translateY(-3px);
+}
+
+/* Layout tổng thể 2 cột cho trang giới thiệu */
+.page-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+}
+
+header { grid-area: header; }
+.sidebar { 
+    grid-area: sidebar; 
+    background: #ffffff; 
+    padding: 30px 20px; 
+    border-right: 1px solid #e2e8f0; 
+}
+.main-content { 
+    grid-area: main; 
+    padding: 30px; 
+    background-color: #f4f7fb;
+}
+
+/* Responsive cho thiết bị di động */
+@media (max-width: 768px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "header"
+            "main"
+            "footer";
+    }
+    .sidebar {
+        display: none; /* Ẩn sidebar trên màn hình nhỏ */
+    }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký lịch sân - CLB Cầu lông</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Xin chào, <span id="user-name">Thành viên</span></div>
+            <nav class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="#" id="btn-logout">Đăng xuất</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Đăng ký lịch ra sân tuần này</h2>
+        <form id="form-schedule">
+            <div class="form-group">
+                <label for="play-date">Chọn ngày đánh: *</label>
+                <input type="date" id="play-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="shift">Khung giờ: *</label>
+                <select id="shift" required>
+                    <option value="">-- Chọn khung giờ --</option>
+                    <option value="Ca 1: 17h30 - 19h00">Ca 1: 17h30 - 19h00</option>
+                    <option value="Ca 2: 19h00 - 20h30">Ca 2: 19h00 - 20h30</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary">Xác nhận đặt lịch sân</button>
+        </form>
+
+        <h3 style="margin-top: 30px; color: #1a2e5a;">Lịch bạn đã đăng ký:</h3>
+        <ul id="my-schedule-list" style="margin-top: 10px; padding-left: 20px;"></ul>
+    </main>
+
+    <script>
+        // Kiểm tra bảo mật: Nếu chưa đăng nhập, đá về trang login
+        const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+        if (!currentUser || currentUser.role !== "user") {
+            alert("Bạn cần đăng nhập bằng tài khoản thành viên để truy cập trang này!");
+            window.location.href = "login.html";
+        } else {
+            document.querySelector("#user-name").textContent = currentUser.fullname;
+        }
+
+        // Xử lý đăng xuất
+        document.querySelector("#btn-logout").addEventListener("click", (e) => {
+            e.preventDefault();
+            sessionStorage.removeItem("currentUser");
+            window.location.href = "login.html";
+        });
+
+        // Xử lý đăng ký lịch đánh
+        const scheduleForm = document.querySelector("#form-schedule");
+        scheduleForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const date = document.querySelector("#play-date").value;
+            const shift = document.querySelector("#shift").value;
+
+            let schedules = JSON.parse(localStorage.getItem("club_schedules")) || [];
+            
+            const newSchedule = {
+                userEmail: currentUser.email,
+                userName: currentUser.fullname,
+                date: date,
+                shift: shift
+            };
+
+            schedules.push(newSchedule);
+            localStorage.setItem("club_schedules", JSON.stringify(schedules));
+            alert("Đăng ký lịch sân thành công!");
+            loadMySchedules();
+        });
+
+        // Hiển thị danh sách lịch đã đặt của riêng user này
+        function loadMySchedules() {
+            const list = document.querySelector("#my-schedule-list");
+            list.innerHTML = "";
+            let schedules = JSON.parse(localStorage.getItem("club_schedules")) || [];
+            let mySchedules = schedules.filter(s => s.userEmail === currentUser.email);
+
+            if (mySchedules.length === 0) {
+                list.innerHTML = "<li>Chưa có lịch sân nào được đặt.</li>";
+                return;
+            }
+
+            mySchedules.forEach(s => {
+                const li = document.createElement("li");
+                li.textContent = `Ngày: ${s.date} | ${s.shift}`;
+                list.appendChild(li);
+            });
+        }
+        loadMySchedules();
+    </script>
+</body>
+</html>

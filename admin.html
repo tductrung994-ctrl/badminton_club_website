@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản trị - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .admin-section { background: white; padding: 24px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .admin-table th, .admin-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .admin-table th { background-color: #f8fafc; color: #1a2e5a; font-weight: 600; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-pending { background: #fef3c7; color: #d97706; }
+        .badge-approved { background: #d1fae5; color: #059669; }
+        .badge-rejected { background: #fee2e2; color: #dc2626; }
+        .btn-action { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-right: 5px; }
+        .btn-approve { background-color: #10b981; color: white; }
+        .btn-reject { background-color: #ef4444; color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVBAR -->
+    <header>
+        <div class="navbar">
+            <div class="logo">🏸 Badminton Admin</div>
+            <nav class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="forum.html">Diễn đàn</a>
+                <a href="schedule.html">Lịch sân</a>
+                <a href="#" id="btn-logout" style="color: #ef4444; font-weight: bold;">Đăng xuất</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <h2 style="color: #1a2e5a; margin-bottom: 24px;">Trang Quản Trị Hệ Thống (Admin Dashboard)</h2>
+
+        <!-- PHẦN 1: QUẢN LÝ TÀI KHOẢN THÀNH VIÊN -->
+        <div class="admin-section">
+            <h3 style="color: #1a2e5a; margin-bottom: 10px;">👥 Quản lý tài khoản thành viên</h3>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 15px;">Danh sách toàn bộ user đã đăng ký vào hệ thống (Hiển thị mật khẩu để hỗ trợ quản lý).</p>
+            <div style="overflow-x: auto;">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Mật khẩu</th>
+                            <th>Vai trò</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table-body">
+                        <!-- Dữ liệu render bằng JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #1e293b; color: white; text-align: center; padding: 20px; margin-top: 40px;">
+        <p>&copy; 2026 Câu lạc bộ Cầu lông. All rights reserved.</p>
+    </footer>
+
+    <!-- SCRIPT BẢO VỆ & XỬ LÝ ADMIN -->
+    <script src="js/admin.js"></script>
+</body>
+</html>
